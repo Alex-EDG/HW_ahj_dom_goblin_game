@@ -1,0 +1,55 @@
+:root {
+  --cell-size: 130px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  height: 100%;
+  background: rgb(42, 63, 39);
+  font-size: 16px;}
+
+  #game-container {
+    height: 100%; 
+  }
+
+h1 {
+  text-align: center;
+  color: rgb(235, 19, 37);
+}
+
+.board-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+  border: 1px solid #000;
+}
+
+.cell {
+  display: flex;
+  align-items:center;
+  justify-content: center; 
+  background-color: rgb(10, 143, 83);
+  border: 1px solid #000;
+}
+
+.map-tile {
+  width: var(--cell-size);
+  height: var(--cell-size);
+}
+
+img { 
+  display: block;
+}
