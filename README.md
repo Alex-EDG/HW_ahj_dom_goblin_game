@@ -1,6 +1,6 @@
 # Домашнее задание к занятию "2. DOM"
 
-![CI](https://github.com/Alex-EDG/HW_ahj_dom_goblin_game/actions/workflows/web.yml/badge.svg)
+[![Build status](https://ci.appveyor.com/api/projects/status/cw4pthumfduv0c1b?svg=true)](https://ci.appveyor.com/project/Alex-EDG/hw-ahj-dom-goblin-game)
 
 [Github Pages](https://alex-edg.github.io/HW_ahj_dom_goblin_game/)
 
