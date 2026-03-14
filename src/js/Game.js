@@ -1,3 +1,8 @@
+/**
+ * Класс генерирует HTML-разметку игрового поля по переданным данным ( boardSize ),
+ * с фиксированным количеством элементов по стороне поля.
+ * @param {boardSize} boardSize
+ */
 export default class Game {
   constructor(boardSize = 4) {
     this.boardSize = boardSize;
@@ -6,6 +11,10 @@ export default class Game {
     this.cells = [];
   }
 
+  /**
+   * Метод получает HTMLElement из DOM и записывает его в свойство this.container
+   * @param {HTMLelement} container
+   */
   bindToDOM(container) {
     if (!(container instanceof HTMLElement)) {
       throw new Error('Контейнер не является элементом "HTMLElement"');
@@ -13,6 +22,10 @@ export default class Game {
     this.container = container;
   }
 
+  /**
+   * Метод генерирует HTML-разметку с учётом переданных в конструктор класса данным и
+   * втавляет её в DOM
+   */
   drawGUI() {
     this.checkBinding();
 
@@ -34,7 +47,11 @@ export default class Game {
     this.cells = Array.from(this.boardElement.children);
   }
 
-  startRandom() {
+  /**
+   * Метод рандомно генерирует расположение goblin на игровом поле через переданный в него интервал
+   *@param {interval} interval
+   */
+  startGame(interval) {
     function getRandomInt(min, max) {
       const min0 = Math.ceil(min);
       const max0 = Math.floor(max);
@@ -44,7 +61,7 @@ export default class Game {
     const image = document.createElement('img');
     image.src = './img/goblin.png';
     let randomIndex;
-    setInterval(() => {
+    this.timerId = setInterval(() => {
       const randomNumber = getRandomInt(0, this.cells.length - 1);
       if (randomNumber === randomIndex) {
         if (randomNumber === this.cells.length - 1) {
@@ -56,9 +73,19 @@ export default class Game {
         randomIndex = randomNumber;
       }
       this.cells[randomIndex].append(image);
-    }, 1000);
+    }, interval);
   }
 
+  /**
+   *  Метод прекращает генерирацию расположения goblin на игровом поле
+   */
+  stopGame() {
+    clearInterval(this.timerId);
+  }
+
+  /**
+   * Метод проверяет связь контейнера с DOM
+   */
   checkBinding() {
     if (this.container === null) {
       throw new Error('Игровой процесс не привязан к DOM');
